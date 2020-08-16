@@ -4,6 +4,9 @@ app = Flask(__name__)
 @app.route('/userLogin', methods = ['POST'])
 def userLogin():
     user = request.get_json()
+    print(user)
+    print('==============================')
+    print(jsonify(user))
     return jsonify(user)
  
 @app.route('/environments/<language>')
