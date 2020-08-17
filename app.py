@@ -19,12 +19,12 @@ def getMenu():
 
     print(user_said, user_req_date, user_req_menu)
     res_dict = dict()
-    res_dict['version'] = "1.0"
-    res_dict['template'] = {
-        'output' : [
+    res_dict["version"] = "2.0"
+    res_dict["template"] = {
+        "outputs" : [
             {
-                'simpleText' : {
-                    'text' : "오늘의 메뉴는 맛있는 밥입니다아!"
+                "simpleText" : {
+                    "text" : "오늘의 메뉴는 맛있는 밥입니다아!"
                 }
             }
         ]
