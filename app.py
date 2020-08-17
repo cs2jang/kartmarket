@@ -21,7 +21,7 @@ def getMenu():
 
     gs_conn = GS()
 
-    print(user_said, user_req_date, user_req_menu)
+    print(user_said, user_req_date['date'], user_req_menu)
     res_dict = dict()
     res_dict["version"] = "2.0"
     res_dict["template"] = {
