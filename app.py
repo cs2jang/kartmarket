@@ -10,7 +10,7 @@ def userLogin():
     return jsonify(user)
  
 @app.route('/getMenu', methods = ['POST'])
-def getMenu(language):
+def getMenu():
     req_dict = request.get_json()
     user_said = req_dict['userRequest']['utterance']
     user_detail = req_dict['action']['detailParams']
