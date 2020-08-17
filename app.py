@@ -16,7 +16,7 @@ def getMenu():
     req_dict = request.get_json()
     user_said = req_dict['userRequest']['utterance']
     user_detail = req_dict['action']['detailParams']
-    user_req_date = user_detail['sys_date']['value']
+    user_req_date = eval(user_detail['sys_date']['value'])
     user_req_menu = user_detail['kart_menu']['value']
 
     gs_conn = GS()
