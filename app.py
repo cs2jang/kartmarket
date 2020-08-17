@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify
+from gdata import GS
+
 app = Flask(__name__)
  
 @app.route('/userLogin', methods = ['POST'])
@@ -16,6 +18,8 @@ def getMenu():
     user_detail = req_dict['action']['detailParams']
     user_req_date = user_detail['sys_date']
     user_req_menu = user_detail['kart_menu']
+
+    gs_conn = GS()
 
     print(user_said, user_req_date, user_req_menu)
     res_dict = dict()
