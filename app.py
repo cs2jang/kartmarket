@@ -29,7 +29,8 @@ def getMenu():
             }
         ]
     }
-    return jsonify(res_dict)
+    print('return is ' + jsonify(res_dict))
+    return jsonify({res_dict})
 
 @app.route('/')
 def hello_world():
