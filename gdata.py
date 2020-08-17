@@ -20,7 +20,7 @@ class GS:
 
         t_date = dt.strptime(target_date, "%Y-%m-%d")
         result_menu = ''
-        for db_date, menu in data[1:]:
+        for db_date, _, menu in data[1:]:
             d_date = dt.strptime(db_date, "%Y-%m-%d")
             if (t_date == d_date):
                 result_menu = menu
