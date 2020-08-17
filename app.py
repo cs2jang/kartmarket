@@ -21,14 +21,15 @@ def getMenu():
     user_req_menu = user_detail['kart_menu']['value']
 
     gs_conn = GS()
-    print(user_said, user_req_date['date'], user_req_menu)
+    res_menu = gs_conn.getGSMenu(user_req_date['date'])
+
     res_dict = dict()
     res_dict["version"] = "2.0"
     res_dict["template"] = {
         "outputs" : [
             {
                 "simpleText" : {
-                    "text" : "오늘의 메뉴는 맛있는 밥입니다아!"
+                    "text" : res_menu
                 }
             }
         ]
