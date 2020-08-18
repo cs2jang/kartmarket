@@ -37,7 +37,9 @@ def getMenu():
 @app.route('/setExcept', methods = ['POST'])
 def setExcept():
     req_dict = request.get_json()
-    print(req_dict)
+    user_detail = req_dict['action']['detailParams']    
+    user_req_num = json.loads(user_detail['몇명']['value'])
+    print(user_req_num)
 
     # gs_conn = GS()
     # res_menu = gs_conn.getGSMenu(user_req_date['date'])
