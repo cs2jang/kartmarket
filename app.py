@@ -1,3 +1,4 @@
+from datetime import datetime as dt
 from flask import Flask, request, jsonify
 from gdata import GS
 import json
@@ -39,10 +40,15 @@ def setExcept():
     req_dict = request.get_json()
     user_detail = req_dict['action']['detailParams']    
     user_req_num = json.loads(user_detail['몇명']['value'])
-    print(user_req_num)
+    print(user_req_num['amount'])
 
-    # gs_conn = GS()
-    # res_menu = gs_conn.getGSMenu(user_req_date['date'])
+    now = dt.now()
+    result_text = ''
+    if now.hour > 11:
+        result_text = '11시 이 후 신청 불가, 식당으로 직접 알려주세요.'
+    else:
+        gs_conn = GS()
+        result_text = gs_conn.setExceptPeople(user_req_num)
 
     res_dict = dict()
     res_dict["version"] = "2.0"
@@ -50,12 +56,11 @@ def setExcept():
         "outputs" : [
             {
                 "simpleText" : {
-                    "text" : "접수 되었습니다."
+                    "text" : result_text
                 }
             }
         ]
     }
-    print(res_dict)
     return jsonify(res_dict)
 
 
