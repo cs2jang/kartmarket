@@ -32,8 +32,30 @@ def getMenu():
             }
         ]
     }
+    return jsonify(res_dict)
+
+@app.route('/setExcept', methods = ['POST'])
+def setExcept():
+    req_dict = request.get_json()
+    print(req_dict)
+
+    # gs_conn = GS()
+    # res_menu = gs_conn.getGSMenu(user_req_date['date'])
+
+    res_dict = dict()
+    res_dict["version"] = "2.0"
+    res_dict["template"] = {
+        "outputs" : [
+            {
+                "simpleText" : {
+                    "text" : "접수 되었습니다."
+                }
+            }
+        ]
+    }
     print(res_dict)
     return jsonify(res_dict)
+
 
 @app.route('/')
 def hello_world():
