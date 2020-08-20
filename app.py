@@ -40,7 +40,7 @@ def setExcept():
     req_dict = request.get_json()
     user_detail = req_dict['action']['detailParams']    
     user_req_num = json.loads(user_detail['몇명']['value'])
-        
+    user_req_num = int(user_req_num['amount'])
     gs_conn = GS()
     result_text = gs_conn.setExceptPeople(user_req_num)
 

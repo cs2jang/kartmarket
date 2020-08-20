@@ -48,8 +48,8 @@ class GS:
                 else:
                     result_num = number
                 cell_num = idx + 2
-                worksheet.update_acell('B%d' % (cell_num), result_num)
-                result_string = target_date + ' %d 명 접수 되었습니다.' % number
+                worksheet.update_acell('B{0}'.format(cell_num), result_num)
+                result_string = target_date + '{0}명 접수 되었습니다.'.format(number)
                 break
             if d_date > t_date:
                 result_string = '등록된 식단이 아직 없습니다. 식당으로 직접 문의해 주세요' 
@@ -77,4 +77,4 @@ class GS:
 
 if __name__ == "__main__":
     gsheet = GS()
-    print(gsheet.getExceptPeople())
+    print(gsheet.setExceptPeople(5))
