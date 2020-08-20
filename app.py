@@ -59,8 +59,8 @@ def setExcept():
 
 @app.route('/getExcept', methods = ['POST'])
 def getExcept():    
-    # gs_conn = GS()
-    # result_text = gs_conn.setExceptPeople(user_req_num)
+    gs_conn = GS()
+    result_text = gs_conn.getExceptPeople()
 
     res_dict = dict()
     res_dict["version"] = "2.0"
@@ -68,7 +68,7 @@ def getExcept():
         "outputs" : [
             {
                 "simpleText" : {
-                    "text" : "result_text"
+                    "text" : result_text
                 }
             }
         ]

@@ -56,6 +56,24 @@ class GS:
                 break
         return result_string
 
+    def getExceptPeople(self, target_date=dt.now().strftime("%Y-%m-%d")):
+        # 스프레스시트 문서 가져오기
+        doc = self.gc.open_by_url(self.spreadsheet_url)
+        # 시트 선택하기
+        worksheet = doc.worksheet('sheet1')
+        data = worksheet.get_all_values()
+
+        t_date = dt.strptime(target_date, "%Y-%m-%d")
+        result_num = '등록된 식단이 아직 없어, 제외신청을 못 받았습니다.'
+        for db_date, except_num, _ in data[1:]:
+            d_date = dt.strptime(db_date, "%Y-%m-%d")
+            if (t_date == d_date):
+                result_num = "현재, %d명 입니다." % except_num
+                break
+            if d_date > t_date:
+                break
+            
+        return result_num 
 
 if __name__ == "__main__":
     gsheet = GS()
