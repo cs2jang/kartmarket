@@ -68,6 +68,7 @@ class GS:
         for db_date, except_num, _ in data[1:]:
             d_date = dt.strptime(db_date, "%Y-%m-%d")
             if (t_date == d_date):
+                print(except_num)
                 result_num = f'현재, {except_num}명 입니다. ' 
                 break
             if d_date > t_date:
