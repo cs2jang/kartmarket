@@ -40,15 +40,9 @@ def setExcept():
     req_dict = request.get_json()
     user_detail = req_dict['action']['detailParams']    
     user_req_num = json.loads(user_detail['몇명']['value'])
-    print(user_req_num['amount'])
-
-    now = dt.now()
-    result_text = ''
-    if now.hour > 11:
-        result_text = '11시 이 후 신청 불가, 식당으로 직접 알려주세요.'
-    else:
-        gs_conn = GS()
-        result_text = gs_conn.setExceptPeople(user_req_num)
+        
+    gs_conn = GS()
+    result_text = gs_conn.setExceptPeople(user_req_num)
 
     res_dict = dict()
     res_dict["version"] = "2.0"
@@ -63,7 +57,24 @@ def setExcept():
     }
     return jsonify(res_dict)
 
+@app.route('/getExcept', methods = ['GET'])
+def getExcept():    
+    # gs_conn = GS()
+    # result_text = gs_conn.setExceptPeople(user_req_num)
 
+    res_dict = dict()
+    res_dict["version"] = "2.0"
+    res_dict["template"] = {
+        "outputs" : [
+            {
+                "simpleText" : {
+                    "text" : "result_text"
+                }
+            }
+        ]
+    }
+    return jsonify(res_dict)
+    
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
