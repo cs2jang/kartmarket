@@ -49,7 +49,7 @@ class GS:
                     result_num = number
                 cell_num = idx + 2
                 worksheet.update_acell('B{0}'.format(cell_num), result_num)
-                result_string = target_date + '{0}명 접수 되었습니다.'.format(number)
+                result_string = target_date + ' {0}명 접수 되었습니다.'.format(number)
                 break
             if d_date > t_date:
                 result_string = '등록된 식단이 아직 없습니다. 식당으로 직접 문의해 주세요' 
