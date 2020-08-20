@@ -57,7 +57,7 @@ def setExcept():
     }
     return jsonify(res_dict)
 
-@app.route('/getExcept', methods = ['GET'])
+@app.route('/getExcept', methods = ['POST'])
 def getExcept():    
     # gs_conn = GS()
     # result_text = gs_conn.setExceptPeople(user_req_num)
