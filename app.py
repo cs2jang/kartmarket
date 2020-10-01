@@ -5,7 +5,7 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/getThisWeekPage', methods = ['POST'])
+@app.route('/getThisWeekPage')
 def getThisWeekPage():
     return render_template('thisweek.html')
 
