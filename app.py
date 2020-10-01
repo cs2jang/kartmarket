@@ -1,9 +1,14 @@
 from datetime import datetime as dt
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from gdata import GS
 import json
 
 app = Flask(__name__)
+
+@app.route('/getThisWeekPage', methods = ['POST'])
+def getThisWeekPage():
+    return render_template('thisweek.html')
+
  
 @app.route('/getWeekly', methods = ['POST'])
 def getWeekly():
@@ -12,7 +17,6 @@ def getWeekly():
     print('==============================')
     print(user_detail)
     # user_req_date = json.loads(user_detail['sys_date']['value'])
-    
     
     return jsonify(user_detail)
  
