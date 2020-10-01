@@ -5,13 +5,14 @@ import json
 
 app = Flask(__name__)
  
-@app.route('/userLogin', methods = ['POST'])
-def userLogin():
-    user = request.get_json()
-    print(user)
+@app.route('/getWeekly', methods = ['POST'])
+def getWeekly():
+    req_dict = request.get_json()
+    user_detail = req_dict['action']['detailParams']
+    user_req_date = json.loads(user_detail['sys_date']['value'])
     print('==============================')
-    print(jsonify(user))
-    return jsonify(user)
+    print(user_detail)    
+    return jsonify(user_detail)
  
 @app.route('/getMenu', methods = ['POST'])
 def getMenu():
