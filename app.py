@@ -9,9 +9,11 @@ app = Flask(__name__)
 def getWeekly():
     req_dict = request.get_json()
     user_detail = req_dict['action']['detailParams']
-    user_req_date = json.loads(user_detail['sys_date']['value'])
     print('==============================')
-    print(user_detail)    
+    print(user_detail)
+    # user_req_date = json.loads(user_detail['sys_date']['value'])
+    
+    
     return jsonify(user_detail)
  
 @app.route('/getMenu', methods = ['POST'])
