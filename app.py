@@ -40,21 +40,23 @@ def getWeekly():
 
     res_dict = dict()
     res_dict["version"] = "2.0"
-    res_dict["contents"] = [{
-        "type":"card.text",
-        "cards":[
+    res_dict["template"] = {
+        "outputs" : [
             {
-                "description":"최소 버전의 card.text 말풍선"
-                , "buttons":[
-                    {
-                        "type":"url",
-                        "label":"더보기",
-                        "data":{"url":"http://www.melon.com"}
-                    }
-                ]
+                "basicCard" : {
+                    "title": "이번 주 식단",
+                     "buttons": [
+                        {
+                        "action": "message",
+                        "label": "이번 주 식단",
+                        "webLinkUrl": "http://34.83.48.135:55005/getThisWeekPage"
+                        },
+                     ]
+                }
             }
         ]
-    }]
+    }
+
     # user_req_date = json.loads(user_detail['sys_date']['value'])
     
     return jsonify(res_dict)
