@@ -14,7 +14,7 @@ def getThisWeekPage():
     gs_conn = GS()
     for i in range(5):
         if i == 0:
-            date_num = monday.strftime("%Y-%m-%d")
+            date_num = monday
         else:
             date_num = monday + timedelta(days=i)
 
