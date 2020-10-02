@@ -23,7 +23,7 @@ def getThisWeekPage():
 
         result_dict['date_nums'].append(date_num.strftime("%Y-%m-%d"))
         result_dict['date_string'].append(date_string)
-        result_dict['menus'].append('\n'.join(menu.split()))
+        result_dict['menus'].append(menu)
 
         # text_form = f'{date_num} {date_string} \n {menu}'
         # result_list.append(text_form)
