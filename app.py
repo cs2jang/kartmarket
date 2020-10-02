@@ -37,9 +37,27 @@ def getWeekly():
     user_detail = req_dict['action']['detailParams']
     print('==============================')
     print(user_detail)
+
+    res_dict = dict()
+    res_dict["version"] = "2.0"
+    res_dict["contents"] = [{
+        "type":"card.text",
+        "cards":[
+            {
+                "description":"최소 버전의 card.text 말풍선"
+                , "buttons":[
+                    {
+                        "type":"url",
+                        "label":"더보기",
+                        "data":{"url":"http://www.melon.com"}
+                    }
+                ]
+            }
+        ]
+    }]
     # user_req_date = json.loads(user_detail['sys_date']['value'])
     
-    return jsonify(user_detail)
+    return jsonify(res_dict)
  
 @app.route('/getMenu', methods = ['POST'])
 def getMenu():
