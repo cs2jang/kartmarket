@@ -5,7 +5,7 @@
   <thead>
       <tr>
           <th>일자</th>
-          {% for date_num, date_string in menu_dict.date_nums, menu_dict.date_string %}
+          {% for date_num, date_string in date_list %}
           <th>{{ date_num }}<br>{{date_string}}</th>
           {% endfor %}
       </tr>
@@ -16,7 +16,7 @@
       </tr>
       <tr class="active-row">
           <td>점심</td>
-          {% for menu in menu_dict.menus %}
+          {% for menu in menu_list %}
           <td>
             {% for m in menu.split() %}
               {{m}}<br>
