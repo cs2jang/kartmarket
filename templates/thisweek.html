@@ -1,24 +1,29 @@
 {% extends 'layout.html' %}
  
 {% block content %}
-<div>
-  <div>
-    <article>
-      <h1>첫 번째 포스트 제목</h1>
-      <p>첫 번째 포스트 내용입니다.</p>
-      <div>
-        <p>작성자</p>
-        <p>2018-08-01</p>
-      </div>
-    </article>
-    <article>
-      <h1>두 번째 포스트 제목</h1>
-      <p>두 번째 포스트 내용입니다.</p>
-      <div>
-        <p>작성자</p>
-        <p>2018-08-01</p>
-      </div>
-    </article>
-  </div>
-</div>
+<table class="styled-table">
+  <thead>
+      <tr>
+          <th>일자</th>
+          {% for date_num in menu_dict.date_nums %}
+          <th>{{ date_num }}</th>
+          {% endfor %}
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>아침</td>
+      </tr>
+      <tr class="active-row">
+          <td>점심</td>
+          {% for menu in menu_dict.menus %}
+          <td>{{ menu }}</td>
+          {% endfor %}
+      </tr>
+      <tr>
+        <td>저녁</td>
+    </tr>
+      <!-- and so on... -->
+  </tbody>
+</table>
 {% endblock %}

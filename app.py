@@ -1,4 +1,4 @@
-from datetime import datetime as dt
+from datetime import datetime, timedelta, date
 from flask import Flask, request, jsonify, render_template
 from gdata import GS
 import json
@@ -7,7 +7,28 @@ app = Flask(__name__)
 
 @app.route('/getThisWeekPage')
 def getThisWeekPage():
-    return render_template('thisweek.html')
+    monday = date.today() + timedelta(days=-date.today().weekday(), weeks=0)
+
+    result_dict ={'date_nums': [], 'date_string': [], 'menus': []}
+    
+    gs_conn = GS()
+    for i in range(5):
+        if i == 0:
+            date_num = monday.strftime("%Y-%m-%d")
+        else:
+            date_num = monday + timedelta(days=i)
+
+        date_string = date_num.strftime("%A")
+        menu = gs_conn.getGSMenu(date_num.strftime("%Y-%m-%d"))
+
+        result_dict['date_nums'].append(date_num.strftime("%Y-%m-%d"))
+        result_dict['date_string'].append(date_string)
+        result_dict['menus'].append(menu)
+
+        # text_form = f'{date_num} {date_string} \n {menu}'
+        # result_list.append(text_form)
+
+    return render_template('thisweek.html', menu_dict=result_dict)
 
  
 @app.route('/getWeekly', methods = ['POST'])
