@@ -5,8 +5,8 @@
   <thead>
       <tr>
           <th>일자</th>
-          {% for date_num in menu_dict.date_nums %}
-          <th>{{ date_num }}</th>
+          {% for date_num, date_string in zip(menu_dict.date_nums, menu_dict.date_string) %}
+          <th>{{ date_num }}<br>{{date_string}}</th>
           {% endfor %}
       </tr>
   </thead>
