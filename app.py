@@ -28,7 +28,7 @@ def getThisWeekPage():
         # text_form = f'{date_num} {date_string} \n {menu}'
         # result_list.append(text_form)
 
-    return render_template('thisweek.html', date_list=zip(result_dict['date_nums'], result_dict['date_string']) menu_list=result_dict['menus'])
+    return render_template('thisweek.html', date_list=zip(result_dict['date_nums'], result_dict['date_string']), menu_list=result_dict['menus'])
 
  
 @app.route('/getWeekly', methods = ['POST'])
