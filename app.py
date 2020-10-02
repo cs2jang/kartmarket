@@ -35,8 +35,6 @@ def getThisWeekPage():
 def getWeekly():
     req_dict = request.get_json()
     user_detail = req_dict['action']['detailParams']
-    print('==============================')
-    print(user_detail)
 
     res_dict = dict()
     res_dict["version"] = "2.0"
@@ -47,7 +45,7 @@ def getWeekly():
                     "title": "이번 주 식단",
                      "buttons": [
                         {
-                        "action": "message",
+                        "action": "webLink",
                         "label": "이번 주 식단 확인",
                         "webLinkUrl": "http://34.83.48.135:55005/getThisWeekPage"
                         },
@@ -56,8 +54,6 @@ def getWeekly():
             }
         ]
     }
-
-    # user_req_date = json.loads(user_detail['sys_date']['value'])
     
     return jsonify(res_dict)
  
