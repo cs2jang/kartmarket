@@ -16,8 +16,7 @@
 
 .styled-table th,
 .td {
-    min-width: 100px;
-    padding: 12px 15px;
+    width: 50px;
     white-space: nowrap;
 }
 .styled-table tbody tr {
