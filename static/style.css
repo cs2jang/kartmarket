@@ -15,7 +15,7 @@
 }
 
 .styled-table th,
-.td {
+.styled-table td {
     min-width: 100px;
     padding: 12px 15px;
     white-space: nowrap;
