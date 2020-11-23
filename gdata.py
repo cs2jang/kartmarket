@@ -35,7 +35,7 @@ class GS:
 
     def setExceptPeople(self, number):
         target_date=dt.now().strftime("%Y-%m-%d %H:%M:%S")
-        if int(target_date[11:13] > 9):
+        if int(target_date[11:13]) > 9:
             result_string = '제외 가능 신청 시간이 지났습니다.'
             return result_string
 
