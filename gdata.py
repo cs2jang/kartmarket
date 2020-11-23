@@ -34,17 +34,13 @@ class GS:
             return '등록된 식단이 아직 없습니다.' 
 
     def setExceptPeople(self, number):
-        target_date=dt.now().strftime("%Y-%m-%d %H:%M:%S")
-        if int(target_date[11:13]) > 9:
-            result_string = '제외 가능 신청 시간이 지났습니다.'
-            return result_string
-
+        target_date=dt.now().strftime("%Y-%m-%d")
         doc = self.gc.open_by_url(self.spreadsheet_url)
         # 시트 선택하기
         worksheet = doc.worksheet('sheet1')
         data = worksheet.get_all_values()
         result_string = ''
-        t_date = dt.strptime(target_date[0:10], "%Y-%m-%d")
+        t_date = dt.strptime(target_date, "%Y-%m-%d")
         for idx, (db_date, except_num, _) in enumerate(data[1:]):
             d_date = dt.strptime(db_date, "%Y-%m-%d")
             if (t_date == d_date):
@@ -54,7 +50,7 @@ class GS:
                     result_num = number
                 cell_num = idx + 2
                 worksheet.update_acell('B{0}'.format(cell_num), result_num)
-                result_string = target_date + ' {0}명 접수 되었습니다.'.format(number)
+                result_string = target_date + ', {0}명 접수 되었습니다.'.format(number)
                 break
             if d_date > t_date:
                 result_string = '등록된 식단이 아직 없습니다. 식당으로 직접 문의해 주세요' 

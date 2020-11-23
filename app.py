@@ -81,6 +81,24 @@ def getMenu():
 
 @app.route('/setExcept', methods = ['POST'])
 def setExcept():
+    res_dict = dict()
+    res_dict["version"] = "2.0"
+    target_date=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    if int(target_date[11:13]) > 9:
+        res_dict["template"] = {
+            "outputs" : [{
+                "basicCard" : {
+                    "title" : '제외 가능 신청 시간이 지났습니다.(오전 9시까지)', 
+                    "buttons": [{
+                        "action": "phone",
+                        "label": "조리사님 연락하기",
+                        "phoneNumber": "01053111028"
+                        }]
+                    }
+            }]
+        }
+        return jsonify(res_dict)
+
     req_dict = request.get_json()
     user_detail = req_dict['action']['detailParams']    
     user_req_num = json.loads(user_detail['몇명']['value'])
@@ -88,8 +106,6 @@ def setExcept():
     gs_conn = GS()
     result_text = gs_conn.setExceptPeople(user_req_num)
 
-    res_dict = dict()
-    res_dict["version"] = "2.0"
     res_dict["template"] = {
         "outputs" : [
             {
