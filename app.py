@@ -82,7 +82,6 @@ def getMenu():
 @app.route('/setExcept', methods = ['POST'])
 def setExcept():
     req_dict = request.get_json()
-    print(req_dict)
     user_detail = req_dict['action']['detailParams']    
     user_req_num = json.loads(user_detail['몇명']['value'])
     user_req_num = int(user_req_num['amount'])
