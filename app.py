@@ -92,7 +92,7 @@ def setExcept():
                     "buttons": [{
                         "action": "phone",
                         "label": "조리사님 연락하기",
-                        "phoneNumber": "01053111028"
+                        "phoneNumber": "01032510770"
                         }]
                     }
             }]
