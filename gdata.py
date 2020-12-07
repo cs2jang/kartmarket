@@ -59,6 +59,8 @@ class GS:
 
     def getExceptPeople(self):
         target_date=dt.now().strftime("%Y-%m-%d")
+        print('getExceptPeople')
+        print(target_date)
         # 스프레스시트 문서 가져오기
         doc = self.gc.open_by_url(self.spreadsheet_url)
         # 시트 선택하기
