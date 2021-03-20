@@ -158,6 +158,32 @@ def getSample():
     }
     return jsonify(res_dict)
     
+@app.route('/getSampleLink', methods = ['POST'])
+def getSampleLink():
+    req_dict = request.get_json()
+    user_detail = req_dict['action']['detailParams']
+
+    res_dict = dict()
+    res_dict["version"] = "2.0"
+    res_dict["template"] = {
+        "outputs" : [
+            {
+                "basicCard" : {
+                    "title": "샘플마트로 연결",
+                     "buttons": [
+                        {
+                        "action": "webLink",
+                        "label": "샘플마트로 연결",
+                        "webLinkUrl": "http://34.83.48.135:55005/getThisWeekPage"
+                        },
+                     ]
+                }
+            }
+        ]
+    }
+    
+    return jsonify(res_dict)
+    
  
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=55005, debug=False)
