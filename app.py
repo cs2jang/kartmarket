@@ -138,6 +138,25 @@ def getExcept():
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
+
+
+@app.route('/getSample', methods = ['POST'])
+def getSample():    
+    gs_conn = GS()
+    result_text = gs_conn.getSample()
+
+    res_dict = dict()
+    res_dict["version"] = "2.0"
+    res_dict["template"] = {
+        "outputs" : [
+            {
+                "simpleText" : {
+                    "text" : result_text
+                }
+            }
+        ]
+    }
+    return jsonify(res_dict)
     
  
 if __name__ == "__main__":

@@ -79,6 +79,19 @@ class GS:
             
         return result_num 
 
+    
+    def getSample(self):
+        # 스프레스시트 문서 가져오기
+        doc = self.gc.open_by_url(self.spreadsheet_url)
+        # 시트 선택하기
+        worksheet = doc.worksheet('test')
+        data = worksheet.get_all_values()
+        result_string = '\n'.join(data)
+
+        return result_string
+
+
+
 if __name__ == "__main__":
     gsheet = GS()
     print(gsheet.setExceptPeople(5))
