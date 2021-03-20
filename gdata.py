@@ -86,8 +86,9 @@ class GS:
         # 시트 선택하기
         worksheet = doc.worksheet('test')
         data = worksheet.get_all_values()
-        print(data)
-        result_string = '\n'.join(data)
+        result_list = []
+        [result_list.append(d[0]) for d in data]
+        result_string = '\n'.join(result_list)
 
         return result_string
 
