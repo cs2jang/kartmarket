@@ -174,7 +174,7 @@ def getSampleLink():
                         {
                         "action": "webLink",
                         "label": "샘플마트로 연결",
-                        "webLinkUrl": "http://34.83.48.135:55005/getThisWeekPage"
+                        "webLinkUrl": "https://kko-ch-ecommerce.herokuapp.com"
                         },
                      ]
                 }
