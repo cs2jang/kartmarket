@@ -1,13 +1,27 @@
 from datetime import datetime as dt
+from os import environ
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 
 class GS:
     def __init__(self):
+        keydict = {
+            "type" : environ.get('type'),
+            "project_id" : environ.get('project_id'),
+            "private_key_id" : environ.get('private_key_id'),
+            "private_key" : environ.get('private_key'),
+            "client_email" : environ.get('client_email'),
+            "client_id" : environ.get('client_id'),
+            "auth_uri" : environ.get('auth_uri'),
+            "token_uri" : environ.get('token_uri'),
+            "auth_provider_x509_cert_url" : environ.get('auth_provider_x509_cert_url'),
+            "client_x509_cert_url" : environ.get('client_x509_cert_url'),
+        }
         scope = ['https://spreadsheets.google.com/feeds']
         json_file_name = 'googlekey.json'
-        credentials = ServiceAccountCredentials.from_json_keyfile_name(json_file_name, scope)
+        credentials = ServiceAccountCredentials.from_json_keyfile_dict(keydict, scope)
+        # credentials = ServiceAccountCredentials.from_json_keyfile_name(json_file_name, scope)
         self.gc = gspread.authorize(credentials)
         self.spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1LitiLHdr-pqA5oRvMyJfdLr8Cqavaxwxfi0WKAcYz_s/edit#gid=0'
 
