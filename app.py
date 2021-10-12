@@ -47,7 +47,7 @@ def getWeekly():
                         {
                         "action": "webLink",
                         "label": "이번 주 식단 확인",
-                        "webLinkUrl": "http://34.83.48.135:55005/getThisWeekPage"
+                        "webLinkUrl": "https://kartmarket.herokuapp.com/getThisWeekPage"
                         },
                      ]
                 }
