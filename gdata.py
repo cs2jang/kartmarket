@@ -19,7 +19,7 @@ class GS:
             "client_x509_cert_url" : environ.get("client_x509_cert_url"),
         }
         scope = ['https://spreadsheets.google.com/feeds']
-        json_file_name = 'googlekey.json'
+        # json_file_name = 'googlekey.json'
         credentials = ServiceAccountCredentials.from_json_keyfile_dict(keydict, scope)
         # credentials = ServiceAccountCredentials.from_json_keyfile_name(json_file_name, scope)
         self.gc = gspread.authorize(credentials)
